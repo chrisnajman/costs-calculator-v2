@@ -1,0 +1,15 @@
+Sorted Entries (ascending):
+costs-calculator.js:231 Sorting ascending: 10/01/2024 18/01/2024
+costs-calculator.js:231 Sorting ascending: 20/01/2024 10/01/2024
+costs-calculator.js:234 Sorted Entries (ascending): (3) [{…}, {…}, {…}]
+0: {date: '18/01/2024', item: 'Shopping', poundsPlusPence: 0, id: '1705747508792'}
+1: {date: '10/01/2024', item: 'Shopping', poundsPlusPence: 0, id: '1705747513240'}
+2: {date: '20/01/2024', item: 'Shopping', poundsPlusPence: 0, id: '1705747519880'}length: 3[[Prototype]]: Array(0)
+
+Sorted Entries (desccending):
+costs-calculator.js:242 Sorting descending: 10/01/2024 18/01/2024
+costs-calculator.js:242 Sorting descending: 20/01/2024 10/01/2024
+costs-calculator.js:245 Sorted Entries (descending): (3) [{…}, {…}, {…}]
+0: {date: '18/01/2024', item: 'Shopping', poundsPlusPence: 0, id: '1705747508792'}
+1: {date: '10/01/2024', item: 'Shopping', poundsPlusPence: 0, id: '1705747513240'}
+2: {date: '20/01/2024', item: 'Shopping', poundsPlusPence: 0, id: '1705747519880'}length: 3[[Prototype]]: Array(0)

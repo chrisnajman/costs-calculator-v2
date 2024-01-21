@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <meta name="description" content="Lorem ipsum dolor sit amet.">
+
+    <title>V2-3 Costs Calculator</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <script type="module" src="./js/index.js"></script>
+
+</head>
+
+<body id="top">
+    <div id="loader" class="loader"><span class="visually-hidden">The page is loading...</span></div>
+    <p class="visually-hidden" aria-hidden="true" id="page-loaded"></p>
+    <a href="#main-content" class="element-invisible element-focusable skip-link">Skip to main content</a>
+    <form id="theme-picker" class="theme-picker">
+        <button type="button" id="btn-theme-toggle" class="btn-theme-toggle" aria-pressed>
+            <svg role="img" class="theme-icon" id="theme-darkmode">
+                <use href="./img/sprite.svg#moon"></use>
+            </svg>
+            <svg role="img" class="theme-icon hide" id="theme-lightmode">
+                <use href="./img/sprite.svg#sun"></use>
+            </svg>
+            <span>Dark Mode:</span> <span id="mode" class="mode"></span>
+            <span class="btn-theme-state" aria-hidden="true"></span>
+        </button>
+    </form>
+    <div class="page-layout">
+        <header class="page-header">
+            <svg role="img" class="icon-logo">
+                <use href="./img/sprite.svg#icon-logo"></use>
+            </svg>
+            <h1>V2-3 Costs Calculator</h1>
+            <form class="currency-selector">
+                <label for="currency-select">Choose currency:</label>
+                <select id="currency-select" name="currency-select">
+                    <option value="GBP">GBP</option>
+                    <option value="EUR">EUR</option>
+                    <option value="USD">USD</option>
+                    <option value="AUD">AUD</option>
+                    <option value="JPY">JPY</option>
+                    <option value="CNY">CNY</option>
+                    <option value="INR">INR</option>
+                </select>
+            </form>
+            <p>Record your daily spend and see the average over a number of days.</p>
+        </header>
+        <main class="main" id="main-content">
+            <form id="costs-form" class="costs-form">
+                <div>
+                    <label for="date">Date <span class="required">*</span></label>
+                    <input type="date" name="date" id="date" required data-input-date>
+                </div>
+                <div>
+                    <label for="items">Item(s) <span class="required">*</span></label>
+                    <input type="text" id="items" required data-input-items value="Shopping">
+                </div>
+                <fieldset>
+                    <legend class="sr-only">Daily spend</legend>
+                    <div class="number">
+                        <label for="pounds"><span data-selected-currency class="currency-symbol">&pound;</span></label>
+                        <input type="number" name="pounds" id="pounds" class="input-number" data-input-pounds
+                            data-input-number min="0" value="0">
+                    </div>
+                    <div class="number">
+                        <label for="pence">.<span class="sr-only"> Pence</span></label>
+                        <input type="number" name="pence" id="pence" class="input-number" data-input-pence
+                            data-input-number min="0" max="99" value="0">
+                    </div>
+                </fieldset>
+
+                <div>
+                    <button class="submit-button">Submit</button>
+                </div>
+            </form>
+            <div class="tables-wrapper">
+                <div role="region" aria-labelledby="captionDailySpend" tabindex="0"
+                    class="table-container results-table-container">
+                    <table>
+                        <caption id="captionDailySpend" class="sr-only">
+                            Average spend
+                        </caption>
+                        <thead>
+                            <tr class="table-headings">
+                                <th>No. of days</th>
+                                <th>
+                                    Total (<span data-selected-currency class="currency-symbol">&pound;</span>)
+                                </th>
+                                <th>
+                                    Average (<span data-selected-currency class="currency-symbol">&pound;</span>)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-total-days>0</td>
+                                <td>
+                                    <span data-total-costs>0.00</span>
+                                </td>
+                                <td>
+                                    <span data-average-spend>0.00</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div role="region" aria-labelledby="captionEntries" tabindex="0"
+                    class="table-container costs-table-container">
+                    <table id="costs-table">
+                        <caption id="captionEntries" class="sr-only">
+                            Daily spend
+                        </caption>
+                        <thead class="sticky">
+                            <tr data-table-headings class="table-headings">
+                                <th>
+                                    <div class="date">
+                                        <div class="date-heading">Date</div>
+                                        <div class="sort-buttons">
+                                            <button data-button-sort-asc class="sort-button" disabled>
+                                                <span class="visually-hidden">Sort date: oldest first</span>
+                                                <svg role="img" class="icon-sort">
+                                                    <use href="./img/sprite.svg#icon-asc"></use>
+                                                </svg>
+                                            </button>
+                                            <button data-button-sort-desc class="sort-button" disabled>
+                                                <span class="visually-hidden">Sort date: most recent first</span>
+                                                <svg role="img" class="icon-sort">
+                                                    <use href="./img/sprite.svg#icon-desc"></use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </th>
+                                <th>
+                                    Spend (<span data-selected-currency class="currency-symbol">&pound;</span>)
+                                </th>
+                                <th>Item(s)</th>
+                                <th>
+                                    <div class="delete">
+                                        <span class="sr-only">Delete</span>
+                                        <svg role="img" class="icon-delete">
+                                            <use href="./img/sprite.svg#icon-delete"></use>
+                                        </svg>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody data-rows class="tbody"></tbody>
+                    </table>
+                    <!-- TEMP - DEV ONLY: Delete all entries and reset-->
+                    <!-- TEMP - DEV ONLY: Delete all entries and reset-->
+                    <form class="delete-all-entries"
+                        style="width: -moz-fit-content; width: fit-content;margin: 30px 0 30px auto; border: 2px solid green;padding: 10px 20px;border-radius: 8px;">
+                        <button id="delete-all-entries">TEMP - DEV ONLY: Delete all entries
+                            and reset
+                            currency to GBP</button>
+                    </form>
+                    <!-- TEMP - DEV ONLY: Delete all entries and reset-->
+                    <!-- TEMP - DEV ONLY: Delete all entries and reset-->
+                </div>
+            </div>
+            <template id="costs-template">
+                <tr class="costs-row">
+                    <td data-date></td>
+                    <td>
+                        <span class="daily-cost"><span data-daily-cost>0.00</span></span>
+                    </td>
+                    <td>
+                        <div class="items-container">
+                            <span data-item-type>Shopping</span>
+                            <button data-button-type-edit>Edit</button>
+                        </div>
+                    </td>
+                    <td>
+                        <button data-button-delete class="remove-button">Delete</button>
+                    </td>
+                </tr>
+            </template>
+        </main>
+        <footer class="page-footer">
+            <ul role="list">
+                <li><a href="https://github.com/chrisnajman/costs-calculator-v2" target="_blank"
+                        rel="noopener noreferrer">GitHub
+                        Repository</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script>
+        // TEMP - DEV ONLY
+        const deleteAllEntries = document.getElementById("delete-all-entries")
+        deleteAllEntries.addEventListener("click", () => {
+
+
+            if (window.confirm("Do you really want to delete all entries (and reset currency to GBP)?")) {
+                window.localStorage.clear()
+                // window.location.reload()
+            }
+
+
+            // if (!window.confirm) return
+            // window.localStorage.clear();
+            // window.location.reload();
+        })
+    </script>
+</body>
+
+</html>
