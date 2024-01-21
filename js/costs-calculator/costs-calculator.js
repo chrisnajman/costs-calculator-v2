@@ -37,13 +37,12 @@ export default function costsCalculator() {
     const dateArray = dateValue.split("-")
     const dateString = dateArray.reverse().join("/")
 
-    const gbp = "\u00A3"
     if (inputPounds.value === "") {
-      alert(`Enter 0 or greater in the ${gbp} field`)
+      alert(`Enter a number greater than or equal to zero`)
       return
     }
     if (inputPence.value === "") {
-      alert("Enter a number between 0 and 99 in the Pence field")
+      alert("Enter a number between 0 and 99")
       return
     }
 
