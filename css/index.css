@@ -2,3 +2,6 @@
 @import "./base.css";
 @import "./theme-switcher.css";
 @import "./loader.css";
+@import "./table.css";
+@import "./buttons.css";
+@import "./costs-form.css";

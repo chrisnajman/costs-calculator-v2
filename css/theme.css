@@ -6,6 +6,8 @@
     --clr-light-blue: rgb(135, 206, 235);
     --clr-blue: #0075ff;
     --clr-lightest: white;
+    --clr-pale-grey: rgb(245 244 244);
+    --clr-pale-green-grey: rgb(201, 211, 211);
     --clr-mid: #555;
     --clr-light-green: rgb(239, 250, 250);
     --clr-green: rgb(4, 167, 167);
@@ -24,21 +26,37 @@
 
     /* Dark theme (default) */
 
-    --body-bg: var(--clr-dark);
+    --body-bg: var(--clr-darker);
     --body-txt: var(--clr-light-green);
     --header-nav-footer-bg: var(--clr-darkest);
     --header-nav-footer-txt: var(--clr-light-green);
-    --nav-footer-border: var(--clr-transparent);
+    --theme-button-bg: var(--clr-darkest);
     --theme-icon: var(--clr-lightest);
     --theme-txt: var(--clr-lightest);
+    /* table */
+    --caption-bg: var(--clr-darkest);
+    --tr-th: var(--clr-darkest);
+    --tr-odd-bg: var(--clr-grey-green);
+    --tr-even-bg: var(--clr-dark);
+    /* costs form */
+    --costs-form-bg: var(--clr-darkest);
+    --costs-form-border: var(--clr-darker);
 }
 
 .light-theme {
-    --body-bg: var(--clr-light-green);
+    --body-bg: var(--clr-pale-green-grey);
     --body-txt: var(--clr-darkest);
     --header-nav-footer-bg: var(--clr-lightest);
     --header-nav-footer-txt: var(--clr-darkest);
-    --nav-footer-border: var(--clr-green);
+    --theme-button-bg: var(--clr-lightest);
     --theme-icon: var(--clr-orange);
     --theme-txt: var(--clr-darkest);
+    /* table */
+    --caption-bg: var(--clr-lightest);
+    --tr-th: var(--clr-lightest);
+    --tr-odd-bg: var(--clr-light-green);
+    --tr-even-bg: var(--clr-lightest);
+    /* costs form */
+    --costs-form-bg: var(--clr-light-green);
+    --costs-form-border: var(--clr-pale-green-grey);
 }

@@ -1,8 +1,151 @@
-import globalEventListener from "../utilities/global-event-listener.js"
-import currencySelector from "./currency-selector.js"
-// import sortDates from "./sort-dates.js"
+themeSwitcher()
+function themeSwitcher() {
+  const LOCAL_STORAGE_PREFIX = "COSTS-V2"
+  const MODE_STORAGE_KEY = `${LOCAL_STORAGE_PREFIX}-switcher`
 
-export default function costsCalculator() {
+  const btnThemeToggle = document.getElementById("btn-theme-toggle")
+  const themeLightMode = document.getElementById("theme-lightmode")
+  const themeDarkMode = document.getElementById("theme-darkmode")
+  const root = document.querySelector("html")
+  const mode = document.getElementById("mode")
+
+  btnThemeToggle.addEventListener("click", (e) => {
+    e.preventDefault()
+
+    root.classList.toggle("light-theme")
+
+    const isLightMode = root.classList.contains("light-theme")
+
+    e.target.setAttribute("aria-pressed", String(isLightMode))
+    if (isLightMode) {
+      lightModeStyle()
+    } else {
+      darkModeStyle()
+    }
+
+    const lightClass = themeLightMode.classList.contains("hide") ? "hide" : ""
+    const darkClass = themeDarkMode.classList.contains("hide") ? "hide" : ""
+
+    const themeItems = [isLightMode, lightClass, darkClass]
+    localStorage.setItem(MODE_STORAGE_KEY, JSON.stringify(themeItems))
+  })
+
+  function setTheme() {
+    const activeTheme = JSON.parse(localStorage.getItem(MODE_STORAGE_KEY)) || [
+      false,
+      "",
+      "",
+    ]
+
+    const isLightMode = activeTheme[0]
+
+    if (isLightMode) {
+      root.classList.add("light-theme")
+      lightModeStyle()
+    } else {
+      root.classList.remove("light-theme")
+      darkModeStyle()
+    }
+
+    btnThemeToggle.setAttribute("aria-pressed", String(isLightMode))
+  }
+
+  function lightModeStyle() {
+    themeDarkMode.classList.add("hide")
+    themeLightMode.classList.remove("hide")
+    mode.textContent = "off"
+  }
+
+  function darkModeStyle() {
+    themeLightMode.classList.add("hide")
+    themeDarkMode.classList.remove("hide")
+    mode.textContent = "on"
+  }
+
+  setTheme()
+}
+
+/* ///////////////////////////////////////////////////////////////////////// */
+loadingAnimation()
+function loadingAnimation() {
+  window.addEventListener("load", () => {
+    const loader = document.getElementById("loader")
+    const pageLoaded = document.getElementById("page-loaded")
+
+    loader.classList.add("loader-hidden")
+
+    loader.addEventListener("transitionend", () => {
+      loader.remove()
+
+      // For screen readers
+      pageLoaded.textContent = "Page has loaded."
+      pageLoaded.setAttribute("aria-hidden", "false")
+    })
+  })
+}
+
+/* ///////////////////////////////////////////////////////////////////////// */
+currencySelector()
+function currencySelector() {
+  /** Currency Local Storage */
+  const LOCAL_STORAGE_PREFIX2 = "CURRENCY-GH"
+  const CURRENCY_STORAGE_KEY = `${LOCAL_STORAGE_PREFIX2}-data`
+
+  /** Currency selectors */
+  const currencySelect = document.getElementById("currency-select")
+  const selectedCurrency = document.querySelectorAll("[data-selected-currency]")
+  const gbp = "\u00A3",
+    eur = "\u20AC",
+    usd = "\u0024",
+    aud = "\u0024",
+    jpy = "\u00A5",
+    cny = "\u5143",
+    inr = "\u20A8"
+
+  const storedCurrency = localStorage.getItem(CURRENCY_STORAGE_KEY) || "GBP"
+  currencySelect.value = storedCurrency
+  updateSelectedCurrency(storedCurrency)
+
+  currencySelect.addEventListener("change", (e) => {
+    const selectedValue = e.target.value
+    updateSelectedCurrency(selectedValue)
+    // Save selected currency to localStorage
+    localStorage.setItem(CURRENCY_STORAGE_KEY, selectedValue)
+  })
+
+  function updateSelectedCurrency(currencySymbol) {
+    selectedCurrency.forEach((currency) => {
+      switch (currencySymbol) {
+        case "GBP":
+          currency.textContent = `${gbp}`
+          break
+        case "EUR":
+          currency.textContent = `${eur}`
+          break
+        case "USD":
+          currency.textContent = `${usd}`
+          break
+        case "AUD":
+          currency.textContent = `${aud}`
+          break
+        case "JPY":
+          currency.textContent = `${jpy}`
+          break
+        case "CNY":
+          currency.textContent = `${cny}`
+          break
+        case "INR":
+          currency.textContent = `${inr}`
+          break
+        default:
+        // Do nothing.
+      }
+    })
+  }
+}
+/* ///////////////////////////////////////////////////////////////////////// */
+costsCalculator()
+function costsCalculator() {
   /** Costs form selectors */
   const costsForm = document.getElementById("costs-form")
   const inputDate = document.querySelector("[data-input-date]")
@@ -244,4 +387,15 @@ export default function costsCalculator() {
     const formattedDateString = reversedDateArray.join("/")
     return new Date(formattedDateString)
   }
+}
+
+/* ///////////////////////////////////////////////////////////////////////// */
+function globalEventListener(type, selector, callback, option = false) {
+  document.addEventListener(
+    type,
+    (e) => {
+      if (e.target.matches(selector)) callback(e)
+    },
+    option
+  )
 }
