@@ -10,7 +10,7 @@
 
     <title>Costs Calculator</title>
     <link rel="stylesheet" href="./css/index.css">
-    <script src="./js/script.js" type="module"></script>
+    <script src="./js/script.js" defer></script>
 
 </head>
 
@@ -20,11 +20,17 @@
     <a href="#main-content" class="element-invisible element-focusable skip-link">Skip to main content</a>
     <form id="theme-picker" class="theme-picker">
         <button type="button" id="btn-theme-toggle" class="btn-theme-toggle" aria-pressed>
-            <svg role="img" class="theme-icon" id="theme-darkmode">
-                <use href="./img/sprite.svg#moon"></use>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" role="img" class="theme-icon"
+                id="theme-darkmode">
+                <path
+                    d="M12 11.807A9.002 9.002 0 0 1 10.049 2a9.942 9.942 0 0 0-5.12 2.735c-3.905 3.905-3.905 10.237 0 14.142 3.906 3.906 10.237 3.905 14.143 0a9.946 9.946 0 0 0 2.735-5.119A9.003 9.003 0 0 1 12 11.807z">
+                </path>
             </svg>
-            <svg role="img" class="theme-icon hide" id="theme-lightmode">
-                <use href="./img/sprite.svg#sun"></use>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" role="img"
+                class="theme-icon hide" id="theme-lightmode">
+                <path
+                    d="M6.995 12c0 2.761 2.246 5.007 5.007 5.007s5.007-2.246 5.007-5.007-2.246-5.007-5.007-5.007S6.995 9.239 6.995 12zM11 19h2v3h-2zm0-17h2v3h-2zm-9 9h3v2H2zm17 0h3v2h-3zM5.637 19.778l-1.414-1.414 2.121-2.121 1.414 1.414zM16.242 6.344l2.122-2.122 1.414 1.414-2.122 2.122zM6.344 7.759 4.223 5.637l1.415-1.414 2.12 2.122zm13.434 10.605-1.414 1.414-2.122-2.122 1.414-1.414z">
+                </path>
             </svg>
             <span>Dark Mode:</span> <span id="mode" class="mode"></span>
             <span class="btn-theme-state" aria-hidden="true"></span>
@@ -32,8 +38,15 @@
     </form>
     <div class="page-layout">
         <header class="page-header">
-            <svg role="img" class="icon-logo">
-                <use href="./img/sprite.svg#icon-logo"></use>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" role="img" class="icon-logo">
+                <path d="M12 10c3.976 0 8-1.374 8-4s-4.024-4-8-4-8 1.374-8 4 4.024 4 8 4z">
+                </path>
+                <path d="M4 10c0 2.626 4.024 4 8 4s8-1.374 8-4V8c0 2.626-4.024 4-8 4s-8-1.374-8-4v2z">
+                </path>
+                <path d="M4 14c0 2.626 4.024 4 8 4s8-1.374 8-4v-2c0 2.626-4.024 4-8 4s-8-1.374-8-4v2z">
+                </path>
+                <path d="M4 18c0 2.626 4.024 4 8 4s8-1.374 8-4v-2c0 2.626-4.024 4-8 4s-8-1.374-8-4v2z">
+                </path>
             </svg>
             <h1>Costs Calculator</h1>
             <p>Record your daily spend and see the average over a number of days.</p>
@@ -112,8 +125,7 @@
                 </table>
             </div>
             <h2>Daily Spend</h2>
-            <div role="region" aria-labelledby="captionEntries" tabindex="0" class="table-scroller"
-                data-costs-table-container>
+            <div role="region" aria-labelledby="captionEntries" tabindex="0" class="table-scroller">
                 <table id="costs-table" class="costs-table">
                     <caption id="captionEntries" class="visually-hidden">
                         Daily spend
@@ -139,8 +151,11 @@
                             <th>
                                 <div class="delete">
                                     <span class="visually-hidden">Delete</span>
-                                    <svg role="img" class="icon-delete">
-                                        <use href="./img/sprite.svg#icon-delete"></use>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"
+                                        role="img" class="icon-delete">
+                                        <path
+                                            d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm4.207 12.793-1.414 1.414L12 13.414l-2.793 2.793-1.414-1.414L10.586 12 7.793 9.207l1.414-1.414L12 10.586l2.793-2.793 1.414 1.414L13.414 12l2.793 2.793z">
+                                        </path>
                                     </svg>
                                 </div>
                             </th>
@@ -148,11 +163,8 @@
                     </thead>
                     <tbody data-rows class="tbody"></tbody>
                 </table>
-            </div>
 
-            <button class="delete-all-entries" data-delete-all-entries disabled>
-                Delete all entries and reset currency to GBP
-            </button>
+            </div>
 
             <template id="costs-template">
                 <tr class="costs-row">

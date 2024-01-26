@@ -1,8 +1,11 @@
+input,
+select {
+    background: var(--input-bg);
+    color: var(--clr-darkest);
+    border: 1px solid var(--body-txt);
+}
+
 .costs-form-wrapper {
-    border-width: 0 0 0 1rem;
-    border-style: solid;
-    border-color: var(--clr-green);
-    border-radius: 0.5rem 0 0 0.5rem;
     width: -moz-fit-content;
     width: fit-content;
     margin: 0 auto 5rem;
@@ -10,10 +13,6 @@
 
 .costs-form {
     background-color: var(--costs-form-bg);
-    border-width: 5px;
-    border-right-width: 0;
-    border-style: solid;
-    border-color: var(--costs-form-border);
     display: flex;
     flex-wrap: wrap;
     align-items: center;
