@@ -24,15 +24,14 @@
         padding: 1rem 2rem 4rem;
         box-shadow: var(--shadow);
 
-        &.flow > * + *,
-        & li {
+        &.flow > * + * {
             margin-top: 1em;
             /* em not rem & NOT margin bottom */
         }
 
-        & * {
+        & p,
+        & li {
             text-align: left;
-            text-wrap: wrap;
         }
     }
 }

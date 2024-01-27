@@ -149,7 +149,6 @@ button {
     }
 
     & p {
-        text-wrap: balance;
         padding-inline: 1rem;
         max-width: 60ch;
         margin: 0 auto;
