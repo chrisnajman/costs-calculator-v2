@@ -158,6 +158,7 @@ function costsCalculator() {
   const costsTemplate = document.getElementById("costs-template")
 
   const sortButton = document.querySelector("[data-sort-button]")
+  sortButton.setAttribute("disabled", "")
 
   costsForm.addEventListener("submit", (e) => {
     e.preventDefault()
@@ -346,7 +347,7 @@ function costsCalculator() {
       sortButton.removeAttribute("disabled")
       localStorage.setItem(SORT_DATE_BUTTONS_STORAGE_KEY, "true")
     } else {
-      sortButton.setAttribute("disabled", "true")
+      sortButton.setAttribute("disabled", "")
       localStorage.setItem(SORT_DATE_BUTTONS_STORAGE_KEY, "false")
     }
   }

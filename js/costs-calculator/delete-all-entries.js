@@ -1,4 +1,5 @@
 export const deleteAllBtn = document.querySelector("[data-delete-all-entries]")
+
 export default function deleteAllEntries() {
   deleteAllBtn.addEventListener("click", (e) => {
     if (

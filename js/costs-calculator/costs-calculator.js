@@ -1,8 +1,12 @@
 import { COSTS_STORAGE_KEY, SORT_DATE_BUTTONS_STORAGE_KEY } from "../globals.js"
 import globalEventListener from "../global-event-listener.js"
-import deleteAllEntries, { enableDeleteAllBtn } from "./delete-all-entries.js"
+import deleteAllEntries, {
+  deleteAllBtn,
+  enableDeleteAllBtn,
+} from "./delete-all-entries.js"
 import currencySelector from "./currency-selector.js"
 
+deleteAllBtn.setAttribute("disabled", "")
 deleteAllEntries()
 
 export default function costsCalculator() {
@@ -21,6 +25,7 @@ export default function costsCalculator() {
   const costsTemplate = document.getElementById("costs-template")
 
   const sortButton = document.querySelector("[data-sort-button]")
+  sortButton.setAttribute("disabled", "")
 
   costsForm.addEventListener("submit", (e) => {
     e.preventDefault()
@@ -210,7 +215,7 @@ export default function costsCalculator() {
       sortButton.removeAttribute("disabled")
       localStorage.setItem(SORT_DATE_BUTTONS_STORAGE_KEY, "true")
     } else {
-      sortButton.setAttribute("disabled", "true")
+      sortButton.setAttribute("disabled", "")
       localStorage.setItem(SORT_DATE_BUTTONS_STORAGE_KEY, "false")
     }
   }
