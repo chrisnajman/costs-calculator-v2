@@ -1,0 +1,38 @@
+.summary {
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.details {
+    position: relative;
+
+    --_content-max-width: 66rem;
+    --_content-space-outside: 2rem;
+
+    width: min(var(--_content-max-width), 100% - var(--_content-space-outside) * 2);
+    margin-inline: auto;
+
+    & .details-content {
+        position: absolute;
+        z-index: 400;
+        top: 4rem;
+        left: 0;
+        right: 0;
+        background-color: var(--header-footer-bg);
+        border: 0.5rem solid var(--header-footer-border);
+
+        padding: 1rem 2rem 4rem;
+        box-shadow: var(--shadow);
+
+        &.flow > * + *,
+        & li {
+            margin-top: 1em;
+            /* em not rem & NOT margin bottom */
+        }
+
+        & * {
+            text-align: left;
+            text-wrap: wrap;
+        }
+    }
+}

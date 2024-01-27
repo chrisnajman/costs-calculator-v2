@@ -24,6 +24,7 @@
     --clr-transparent: transparent;
 
     --highlight: var(--clr-light-blue);
+    --shadow: 0px 10px 6px -3px rgba(0, 0, 0, 0.55);
 
     /* Dark theme (default) */
     --body-bg: var(--clr-darker);

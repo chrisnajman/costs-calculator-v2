@@ -21,6 +21,11 @@ p:empty {
     display: none;
 }
 
+.flow > * + * {
+    margin-top: 1em;
+    /* em not rem & NOT margin bottom */
+}
+
 body {
     background-color: var(--body-bg);
     color: var(--body-txt);
@@ -133,6 +138,16 @@ button {
         padding-top: 5rem;
     }
 
+    & ul {
+        width: -moz-fit-content;
+        width: fit-content;
+        margin: 0 auto;
+    }
+
+    & li {
+        max-width: 60ch;
+    }
+
     & p {
         text-wrap: balance;
         padding-inline: 1rem;
@@ -152,7 +167,6 @@ button {
     text-decoration: none;
 }
 
-.page-header ul,
 .page-footer ul {
     display: flex;
     gap: 1rem;

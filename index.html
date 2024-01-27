@@ -37,6 +37,65 @@
             </svg>
             <h1>Costs Calculator</h1>
             <p>Record your daily spend and see the average over a number of days.</p>
+            <details id="details" class="details">
+                <summary aria-controls="#details" id="summary" class="summary" aria-expanded="false">
+                    <span id="summary-status" class="visually-hidden">Open</span> Usage
+                </summary>
+                <div class="details-content flow">
+                    <h2>Form</h2>
+                    <ul role="list">
+                        <li><b>Currency</b>: Optional. The app supports a limited number of currencies, represented by
+                            symbols. However, any
+                            decimal-based currency is compatible.</li>
+                        <li><b>Date</b>: Required. An accurate average over a period requires an entry for every day of
+                            that period.</li>
+                        <li><b>Item(s)</b>: Required. This field cannot be left blank, but the form can be submitted
+                            without changing the
+                            default value 'Shopping'.</li>
+                        <li><b>Amount</b>: Required. If nothing is spent on a day, leave it as '0 - 0'.</li>
+                    </ul>
+                    <h2>Daily Spend</h2>
+                    <p>The 'Reorder entries?' button next to the 'Date' heading is disabled until 2 or more entries have
+                        been made. Its
+                        function is to sort the entries in ascending order if the date sequence gets out of sync. This
+                        might occur if a day
+                        is missed and added later or if an earlier entry is deleted due to inaccuracy and needs
+                        re-insertion.</p>
+
+                    <h2>'Delete all entries...' button</h2>
+                    <p>This button is disabled until 1 entry has been made. Clicking it will launch a 'confirm' dialog.
+                        If 'yes' is clicked,
+                        <em>all</em> entries in local storage will be erased.
+                    </p>
+                    <!-- <h2>Form</h2>
+                    <ul role="list">
+                        <li><b>Currency</b>: Optional. There are a limited number of currencies available. However,
+                            these are merely
+                            symbols: The app works with any decimal-based currency.</li>
+                        <li><b>Date</b>: Required. To get an accurate average over a period you <em>must</em> make an
+                            entry for every day of that
+                            period.</li>
+                        <li><b>Item(s)</b>: Required. You cannot leave this field blank. However, you can submit the
+                            form without changing
+                            the default value 'Shopping'.</li>
+                        <li><b>Amount</b>: Required. If you do not spend anything on a day, leave as '0, 0'.</li>
+                    </ul>
+                    <h2>Daily Spend</h2>
+                    <p>The 'Reorder entries?' button next to the 'Date' heading is disabled until 2 or more
+                        entries have been
+                        made. Its function is to sort the entries in ascending order if the date sequence gets out of
+                        synch. This would
+                        happen if you missed a day and added it later or you deleted an earlier entry because it was
+                        innacurate and wanted to re-insert it.</p>
+
+                    <h2>'Delete all entries...' button</h2>
+                    <p>This is disabled until 1 entry has been made. Clicking it will launch a 'confirm' dialog. If you
+                        click 'yes', <em>all</em> entries
+                        in local storage will be erased.</p> -->
+
+                    <button id="close-details" type="button">Close</button>
+                </div>
+            </details>
         </header>
         <main class="main" id="main-content">
             <div class="costs-form-wrapper">
@@ -65,12 +124,12 @@
                         <legend class="visually-hidden">Daily spend</legend>
                         <div class="number">
                             <label for="pounds"><span data-selected-currency
-                                    class="currency-symbol">&pound;</span></label>
+                                    class="currency-symbol">&pound;</span>*</label>
                             <input type="number" name="pounds" id="pounds" class="input-number" data-input-pounds
                                 data-input-number min="0" value="0">
                         </div>
                         <div class="number">
-                            <label for="pence">.<span class="visually-hidden"> Pence, cents etc.</span></label>
+                            <label for="pence"><span class="visually-hidden"> Pence, cents etc.</span>*</label>
                             <input type="number" name="pence" id="pence" class="input-number" data-input-pence
                                 data-input-number min="0" max="99" value="0">
                         </div>
@@ -180,7 +239,6 @@
             </ul>
         </footer>
     </div>
-
 </body>
 
 </html>

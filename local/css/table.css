@@ -42,7 +42,6 @@ table {
 
     /* class applied only when > 10 entries */
     & .table-heading-shadow {
-        box-shadow: 0px 10px 5px 0px rgba(0, 0, 0, 0.55);
         box-shadow: 0px 10px 6px -3px rgba(0, 0, 0, 0.55);
         border-bottom-width: 0;
     }
