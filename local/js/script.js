@@ -321,7 +321,7 @@ function costsCalculator() {
   /** ========== */
 
   // Sort date oldest first (ascending)
-  sortButton.addEventListener("click", (e) => {
+  sortButton.addEventListener("click", () => {
     entries.sort((a, b) => {
       return parseDate(a.date) - parseDate(b.date)
     })
