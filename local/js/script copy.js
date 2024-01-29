@@ -141,37 +141,6 @@ function currencySelector() {
   }
 }
 /* ///////////////////////////////////////////////////////////////////////// */
-const deleteAllBtn = document.querySelector("[data-delete-all-entries]")
-deleteAllBtn.setAttribute("disabled", "")
-deleteAllEntries()
-
-function deleteAllEntries() {
-  deleteAllBtn.addEventListener("click", () => {
-    if (window.confirm("Do you really want to delete all entries?")) {
-      const keysToRemove = [
-        "COSTS_v2_LOCAL-entries",
-        "COSTS_v2_LOCAL-sort-buttons-enabled",
-      ]
-
-      keysToRemove.forEach((keyToRemove) => {
-        for (let i = 0; i < localStorage.length; i++) {
-          const key = localStorage.key(i)
-          if (key.startsWith(keyToRemove)) {
-            localStorage.removeItem(key)
-          }
-        }
-      })
-      window.location.reload()
-    }
-  })
-}
-
-function enableDeleteAllBtn(entries) {
-  if (entries.length > 0) {
-    deleteAllBtn.removeAttribute("disabled")
-  }
-}
-/* ///////////////////////////////////////////////////////////////////////// */
 costsCalculator()
 function costsCalculator() {
   const costsForm = document.getElementById("costs-form")
@@ -275,7 +244,6 @@ function costsCalculator() {
     averageSpend.textContent = (totalCostsNum / totalRows).toFixed(2)
 
     enableSortButton()
-    enableDeleteAllBtn(entries)
     costsTableScrollShadow()
 
     tbodyRows.appendChild(templateClone)
