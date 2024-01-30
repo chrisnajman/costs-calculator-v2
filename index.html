@@ -39,7 +39,7 @@
                 <use href="./img/sprite.svg#icon-logo"></use>
             </svg>
             <h1>Costs Calculator</h1>
-            <p>Record your daily spend and see the average over a number of days.</p>
+            <p class="intro">Record your daily spend and see the average over a number of days.</p>
             <details id="details" class="details">
                 <summary aria-controls="#details" id="summary" class="summary" aria-expanded="false">
                     <span id="summary-status" class="visually-hidden">Open</span> Usage
@@ -67,10 +67,16 @@
 
                     <h2>'Delete all entries...' button</h2>
                     <p>This button is disabled until 1 entry has been made. Clicking it will launch a 'confirm' dialog.
-                        If 'yes' is clicked,
-                        <em>all</em> entries in local storage will be erased.
+                        If 'yes' is clicked, local storage for the following will be erased:
                     </p>
-                    <button id="close-details" type="button">Close</button>
+                    <ul class="flow">
+                        <li>Entries for all dates in the 'Daily Spend' table.</li>
+                        <li>The 'Reorder entries?' button state value.</li>
+                    </ul>
+                    <p><b>Note</b>: Local storage will be cleared for only this specific pair of keys in the app; local
+                        storage for other apps will not be affected.</p>
+                    <div class="close-button"><button id="close-details" type="button">Close</button></div>
+
                 </div>
             </details>
         </header>

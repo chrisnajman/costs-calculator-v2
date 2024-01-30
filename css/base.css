@@ -138,19 +138,12 @@ button {
         padding-top: 5rem;
     }
 
-    & ul {
-        width: -moz-fit-content;
-        width: fit-content;
-        margin: 0 auto;
-    }
-
-    & li {
-        max-width: 60ch;
-    }
-
+    & li,
     & p {
-        padding-inline: 1rem;
         max-width: 60ch;
+    }
+
+    & .intro {
         margin: 0 auto;
     }
 }

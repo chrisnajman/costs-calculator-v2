@@ -1,6 +1,7 @@
 .summary {
     cursor: pointer;
     font-weight: 600;
+    margin-bottom: 2rem;
 }
 
 .details {
@@ -13,25 +14,18 @@
     margin-inline: auto;
 
     & .details-content {
-        position: absolute;
-        z-index: 400;
-        top: 4rem;
-        left: 0;
-        right: 0;
         background-color: var(--header-footer-bg);
-        border: 0.5rem solid var(--header-footer-border);
+        border: 0.2rem solid var(--header-footer-border);
 
         padding: 1rem 2rem 4rem;
-        box-shadow: var(--shadow);
-
-        &.flow > * + * {
-            margin-top: 1em;
-            /* em not rem & NOT margin bottom */
-        }
 
         & p,
         & li {
             text-align: left;
+        }
+
+        .close-button {
+            padding-top: 1.5rem;
         }
     }
 }
