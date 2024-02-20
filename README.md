@@ -90,7 +90,8 @@ The 'main' version structures the JavaScript with ES6 Modules. ES6 Modules will 
 > [!NOTE]
 > The 'dist' version also runs on the server.
 
-> [!NOTE] > `scripts.min.js` is not readable by humans. To inspect the JavaScript, look in `scripts.js`.
+> [!NOTE]
+> `scripts.min.js` is not readable by humans. To inspect the JavaScript, look in `scripts.js`.
 
 > [!NOTE]
 > The functionality remains the same in both versions.
