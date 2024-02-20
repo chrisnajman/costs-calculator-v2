@@ -171,6 +171,15 @@ function enableDeleteAllBtn(entries) {
     deleteAllBtn.removeAttribute("disabled")
   }
 }
+
+/* ///////////////////////////////////////////////////////////////////////// */
+const expandTableBtn = document.querySelector("[data-expand-table]")
+expandTableBtn.setAttribute("disabled", "")
+function enableExpandTableBtn(entries) {
+  if (entries.length > 7) {
+    expandTableBtn.removeAttribute("disabled")
+  }
+}
 /* ///////////////////////////////////////////////////////////////////////// */
 costsCalculator()
 function costsCalculator() {
@@ -276,6 +285,7 @@ function costsCalculator() {
 
     enableSortButton()
     enableDeleteAllBtn(entries)
+    enableExpandTableBtn(entries)
     costsTableScrollShadow()
 
     tbodyRows.appendChild(templateClone)
@@ -391,6 +401,25 @@ function costsCalculator() {
     const formattedDateString = reversedDateArray.join("/")
     return new Date(formattedDateString)
   }
+
+  // Expand table button
+  expandTableBtn.addEventListener("click", (e) => {
+    const entriesTableContainer = document.querySelector(
+      "[data-costs-table-container]"
+    )
+
+    const entriesTableHeader = document.querySelector(
+      "[data-costs-table-header]"
+    )
+
+    e.target.textContent =
+      e.target.textContent === "Expand table"
+        ? "Contract table"
+        : "Expand table"
+
+    entriesTableContainer.classList.toggle("table-entries-max-height")
+    entriesTableHeader.classList.toggle("sticky")
+  })
 }
 
 /* ///////////////////////////////////////////////////////////////////////// */

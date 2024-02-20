@@ -1,0 +1,18 @@
+.toolbar {
+    margin: 0 auto 1rem;
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 67rem;
+
+    & h2 {
+        margin-block-end: 0;
+    }
+
+    @media screen and (width <= 600px) {
+        justify-content: center;
+        gap: 1rem;
+        flex-direction: column;
+    }
+}

@@ -2,7 +2,7 @@
 
 Record and save your daily spend and see the average over a number of days.
 
-**Note**: This is an upgrading and updating of an [earlier app](https://chrisnajman.github.io/costs-calculator/) which I now consider deprecated.
+**Note**: This is an upgrading and updating of an [earlier app](https://github.com/chrisnajman/costs-calculator) which I now consider deprecated.
 
 The main difference is that in the current version I have substituted a 'Reorder entries?' button for maintaining date order, instead of drag-and-drop (which I found to be buggy).
 
@@ -18,8 +18,9 @@ The main difference is that in the current version I have substituted a 'Reorder
       - [Date > Button: Reorder Entries?](#date--button-reorder-entries)
       - [Edit Item(s)](#edit-items)
       - [Delete Entry](#delete-entry)
-  - [Button: Delete all entries...](#button-delete-all-entries)
-- [The 'local' Folder](#the-local-folder)
+  - [Button: Delete all entries](#button-delete-all-entries)
+  - [Button: Expand / Contract table](#button-expand--contract-table)
+- [The 'dist' Folder](#the-dist-folder)
 - [Accessibility](#accessibility)
   - [WAVE Web Accessibility Evaluation Tools Report](#wave-web-accessibility-evaluation-tools-report)
 - [Testing](#testing)
@@ -59,22 +60,47 @@ This button, located next to the 'Date' heading, is disabled until 2 or more ent
 
 ---
 
-### Button: Delete all entries...
+### Button: Delete all entries
 
-This button is disabled until 1 entry has been made. Clicking it will launch a 'confirm' dialog. If 'yes' is clicked, local storage for the following will be erased:
+This button is disabled until 8 entries have been made. Clicking it will launch a 'confirm' dialog. If 'yes' is clicked, local storage for the following will be erased:
 
 - Entries for all dates in the 'Daily Spend' table.
 - The 'Reorder entries?' button state value.
 
-**Note**: Local storage will be cleared for only this specific pair of keys in the Costs Calculator V2 app; local storage for other apps will not be affected.
+> [!NOTE]
+> Local storage will be cleared for only this specific pair of keys in the Costs Calculator V2 app; local storage for other apps will not be affected.
 
 ---
 
-## The 'local' Folder
+### Button: Expand / Contract table
 
-The 'main' version structures the JavaScript with ES6 Modules. ES6 Modules will not work if you want to run the app from the local file system (In Windows, this is `file:///C:/Users/...`). Therefore, in the 'local' folder, all JavaScript is consolidated into 1 file (`script.js`). The app can then be run by clicking 'index.html'.
+This button is disabled until 8 entries have been made. Clicking 'Expand table' will remove vertical scrollbars and display all entries; clicking 'Contract table' will reinstate scrollbars.
 
-The functionality remains the same in both versions.
+> [!NOTE]
+> This behaviour is not saved to local storage.
+
+---
+
+## The 'dist' Folder
+
+### JavaScript
+
+The 'main' version structures the JavaScript with ES6 Modules. ES6 Modules will not work if you want to run the app from the local file system (In Windows, this is `file:///C:/Users/...`). Therefore, in the 'dist' folder, all JavaScript is consolidated into 1 file (`scripts.js`). `scripts.js` is minified in a ['Babel'-like JavaScript compressor](https://jscompress.com/) and output to `scripts.min.js`. The app can then be run locally by clicking 'index.html'.
+
+> [!NOTE]
+> The 'dist' version also runs on the server.
+
+> [!NOTE] > `scripts.min.js` is not readable by humans. To inspect the JavaScript, look in `scripts.js`.
+
+> [!NOTE]
+> The functionality remains the same in both versions.
+
+### CSS
+
+The 'main' version structures the CSS with individual files imported into `index.css`. The 'dist'version compresses all CSS files into one, `style.css`. This is then minified and output to `style.min.css`.
+
+> [!NOTE]
+> The styling remains the same in both versions.
 
 ---
 
@@ -90,8 +116,8 @@ The functionality remains the same in both versions.
 
 Tested on Windows 10 with:
 
-- Chrome 121.0.6167.85 (Official Build) (64-bit)
-- Firefox 122.0 (64-bit)
-- Microsoft Edge 120.0.2210.144 (Official build) (64-bit)
+- Chrome
+- Firefox
+- Microsoft Edge
 
 Page tested in both browser and device views.

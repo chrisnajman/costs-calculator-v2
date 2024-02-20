@@ -1,9 +1,13 @@
 .table-scroller {
     max-width: -moz-fit-content;
     max-width: fit-content;
-    max-height: 70rem;
     margin: 0 auto 5rem;
 }
+
+.table-entries-max-height {
+    max-height: 70rem;
+}
+
 table {
     width: 100%;
     max-width: 120rem;
@@ -54,7 +58,6 @@ table {
     & .sticky {
         position: sticky;
         z-index: 1;
-        position: sticky;
         top: 0;
     }
     & .delete {

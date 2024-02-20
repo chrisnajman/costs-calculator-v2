@@ -9,8 +9,8 @@
         content="Record and save your daily costs. See the average daily cost over a number of days. Reorder entries if they get out of synch. Save entries to local storage.">
 
     <title>Costs Calculator</title>
-    <link rel="stylesheet" href="./css/index.css">
-    <script src="./js/script.js" defer></script>
+    <link rel="stylesheet" href="./css/style.min.css">
+    <script src="./js/script.min.js" defer></script>
 
 </head>
 
@@ -124,13 +124,21 @@
                     </tbody>
                 </table>
             </div>
-            <h2>Daily Spend</h2>
-            <div role="region" aria-labelledby="captionEntries" tabindex="0" class="table-scroller">
+
+            <div class="toolbar">
+                <button class="delete-all-entries" data-delete-all-entries disabled>Delete all entries</button>
+                <h2>Daily Spend</h2>
+                <button data-expand-table class="expand-table" disabled>Expand table</button>
+            </div>
+
+
+            <div role="region" aria-labelledby="captionEntries" tabindex="0"
+                class="table-scroller table-entries-max-height" data-table-entries-scroller data-costs-table-container>
                 <table id="costs-table" class="costs-table">
                     <caption id="captionEntries" class="visually-hidden">
                         Daily spend
                     </caption>
-                    <thead class="sticky">
+                    <thead class="sticky" data-costs-table-header>
                         <tr data-table-headings data-table-heading-daily-spend class="table-headings">
                             <th>
                                 <div class="date">
@@ -164,9 +172,7 @@
                     <tbody data-rows class="tbody"></tbody>
                 </table>
             </div>
-            <button class="delete-all-entries" data-delete-all-entries disabled>
-                Delete all entries
-            </button>
+
             <template id="costs-template">
                 <tr class="costs-row">
                     <td data-date></td>

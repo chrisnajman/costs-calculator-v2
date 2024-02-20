@@ -4,10 +4,13 @@ import deleteAllEntries, {
   deleteAllBtn,
   enableDeleteAllBtn,
 } from "./delete-all-entries.js"
+import { expandTableBtn, enableExpandTableBtn } from "./expand-table.js"
 import currencySelector from "./currency-selector.js"
 
 deleteAllBtn.setAttribute("disabled", "")
 deleteAllEntries()
+
+expandTableBtn.setAttribute("disabled", "")
 
 export default function costsCalculator() {
   const costsForm = document.getElementById("costs-form")
@@ -112,6 +115,7 @@ export default function costsCalculator() {
 
     enableSortButton()
     enableDeleteAllBtn(entries)
+    enableExpandTableBtn(entries)
     costsTableScrollShadow()
 
     tbodyRows.appendChild(templateClone)
@@ -180,6 +184,7 @@ export default function costsCalculator() {
     const costsTableHeader = document.querySelector(
       "[data-table-heading-daily-spend]"
     )
+
     if (entries.length > 7) {
       costsTableHeader.classList.add("table-heading-shadow")
     }
@@ -227,4 +232,23 @@ export default function costsCalculator() {
     const formattedDateString = reversedDateArray.join("/")
     return new Date(formattedDateString)
   }
+
+  // Expand table button
+  expandTableBtn.addEventListener("click", (e) => {
+    const entriesTableContainer = document.querySelector(
+      "[data-costs-table-container]"
+    )
+
+    const entriesTableHeader = document.querySelector(
+      "[data-costs-table-header]"
+    )
+
+    e.target.textContent =
+      e.target.textContent === "Expand table"
+        ? "Contract table"
+        : "Expand table"
+
+    entriesTableContainer.classList.toggle("table-entries-max-height")
+    entriesTableHeader.classList.toggle("sticky")
+  })
 }

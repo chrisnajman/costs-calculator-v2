@@ -65,7 +65,12 @@
                         is missed and added later or if an earlier entry is deleted due to inaccuracy and needs
                         re-insertion.</p>
 
-                    <h2>'Delete all entries...' button</h2>
+                    <h2>'Expand / Contract table' button</h2>
+                    <p>This button is disabled until 8 entries have been made. Clicking 'Expand table' will remove
+                        vertical scrollbars and display all entries; clicking 'Contract table' will reinstate
+                        scrollbars. Note: this behaviour is not saved.</p>
+
+                    <h2>'Delete all entries' button</h2>
                     <p>This button is disabled until 1 entry has been made. Clicking it will launch a 'confirm' dialog.
                         If 'yes' is clicked, local storage for the following will be erased:
                     </p>
@@ -153,14 +158,21 @@
                     </tbody>
                 </table>
             </div>
-            <h2>Daily Spend</h2>
-            <div role="region" aria-labelledby="captionEntries" tabindex="0" class="table-scroller"
-                data-costs-table-container>
+
+            <div class="toolbar">
+                <button class="delete-all-entries" data-delete-all-entries disabled>Delete all entries</button>
+                <h2>Daily Spend</h2>
+                <button data-expand-table class="expand-table" disabled>Expand table</button>
+            </div>
+
+
+            <div role="region" aria-labelledby="captionEntries" tabindex="0"
+                class="table-scroller table-entries-max-height" data-table-entries-scroller data-costs-table-container>
                 <table id="costs-table" class="costs-table">
                     <caption id="captionEntries" class="visually-hidden">
                         Daily spend
                     </caption>
-                    <thead class="sticky">
+                    <thead class="sticky" data-costs-table-header>
                         <tr data-table-headings data-table-heading-daily-spend class="table-headings">
                             <th>
                                 <div class="date">
@@ -192,9 +204,9 @@
                 </table>
             </div>
 
-            <button class="delete-all-entries" data-delete-all-entries disabled>
+            <!-- <button class="delete-all-entries" data-delete-all-entries disabled>
                 Delete all entries
-            </button>
+            </button> -->
 
             <template id="costs-template">
                 <tr class="costs-row">

@@ -6,6 +6,7 @@ export default function deleteAllEntries() {
       const keysToRemove = [
         "COSTS_v2_GH-entries",
         "COSTS_v2_GH-sort-buttons-enabled",
+        "COSTS_v2_GH-expand-table-button-enabled",
       ]
 
       keysToRemove.forEach((keyToRemove) => {
